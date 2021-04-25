@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--layer-list就是将多个图片或两种效果按照顺序层叠在一起显示，默认情况下所有item中定义的
+图层都会自动根据它附上View的大小而进行缩放，其中的item是按照顺序从下往上进行叠加的，即先定义
+的item在最下面，后面添加的item依次往上面叠放-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#4A4C4D"/>
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="#19CE7C"/>
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#19CE7C"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

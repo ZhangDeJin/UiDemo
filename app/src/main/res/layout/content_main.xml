@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--约束布局，是升级版的RelativeLayout，它能够以更少的布局嵌套，实现更复杂的布局效果-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#272E34"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/tv_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="听筒"
+        android:textSize="14dp"
+        android:textColor="#62696C"
+        android:drawablePadding="10dp"
+        android:drawableTop="@drawable/tel_receiver"
+        android:gravity="center"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

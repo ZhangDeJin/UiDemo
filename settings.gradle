@@ -1,0 +1,4 @@
+include ':systemfuncationlibrary'
+include ':zdjuilibrary'
+include ':app'
+rootProject.name = "UiDemo"
