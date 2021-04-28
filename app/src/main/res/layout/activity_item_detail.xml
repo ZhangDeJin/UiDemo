@@ -49,7 +49,7 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/year_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,9 +60,35 @@
                 android:text="2021年第18周"
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/arrow_down"
-                android:drawablePadding="5dp"/>
+                android:drawablePadding="5dp"/>-->
 
-            <TextView
+            <!--注释掉上面的写法，改用下面的，是为了实现箭头由向下到向上，由向上到向下时候增加一个动画-->
+
+            <LinearLayout
+                android:id="@+id/year_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_write_stoke"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="14dp"
+                    android:text="2021年第18周"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_down"
+                    android:layout_marginRight="10dp"/>
+            </LinearLayout>
+
+            <!--<TextView
                 android:id="@+id/year_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,9 +99,33 @@
                 android:text="2021年4月"
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/arrow_down"
-                android:drawablePadding="5dp"/>
+                android:drawablePadding="5dp"/>-->
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/year_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_write_stoke"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="14dp"
+                    android:text="2021年4月"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_down"
+                    android:layout_marginRight="10dp"/>
+            </LinearLayout>
+
+            <!--<TextView
                 android:id="@+id/year_month_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +136,31 @@
                 android:text="2021年4月第4周"
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/arrow_down"
-                android:drawablePadding="5dp"/>
+                android:drawablePadding="5dp"/>-->
+
+            <LinearLayout
+                android:id="@+id/year_month_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_write_stoke"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="14dp"
+                    android:text="2021年4月第4周"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_down"
+                    android:layout_marginRight="10dp"/>
+            </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

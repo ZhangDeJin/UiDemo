@@ -23,8 +23,7 @@ import java.util.Calendar;
 public class ItemDetailActivity extends AppCompatActivity {
     private Calendar currentCalendar;
     private DatePickerDialog datePickerDialog1, datePickerDialog2, datePickerDialog3;
-    private LinearLayout ll_content;
-    private TextView year_week, year_month, year_month_week;
+    private LinearLayout ll_content, year_week, year_month, year_month_week;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +37,9 @@ public class ItemDetailActivity extends AppCompatActivity {
                 .setAction("确定", v -> {
                     ll_content.setVisibility(View.VISIBLE);
                     currentCalendar = Calendar.getInstance();
-                    year_week.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append("第").append(currentCalendar.get(Calendar.WEEK_OF_YEAR)).append("周").toString());
-                    year_month.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").toString());
-                    year_month_week.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").append("第").append(currentCalendar.get(Calendar.WEEK_OF_MONTH)).append("周").toString());
+                    ((TextView)(year_week.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append("第").append(currentCalendar.get(Calendar.WEEK_OF_YEAR)).append("周").toString());
+                    ((TextView)(year_month.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").toString());
+                    ((TextView)(year_month_week.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").append("第").append(currentCalendar.get(Calendar.WEEK_OF_MONTH)).append("周").toString());
                     fab.setVisibility(View.GONE);
                 }).show());
 
@@ -94,14 +93,16 @@ public class ItemDetailActivity extends AppCompatActivity {
                 dialogType[2] = true;
                 DatePickerBuilder datePickerBuilder = new DatePickerBuilder(this, calendar -> {
                     currentCalendar = calendar;
-                    year_week.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append("第").append(currentCalendar.get(Calendar.WEEK_OF_YEAR)).append("周").toString());
+                    ((TextView)(year_week.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append("第").append(currentCalendar.get(Calendar.WEEK_OF_YEAR)).append("周").toString());
                 }).setDialogStyle(R.style.FirstDialogAnimationStyle)
                         .setType(dialogType)
                         .setCalendar(currentCalendar)
                         .setRangDate(null, Calendar.getInstance());
                 datePickerDialog1 = datePickerBuilder.build();
+                datePickerDialog1.setOnDismissListener(dialog -> year_week.getChildAt(1).animate().setDuration(500).rotation(0).start());
             }
             datePickerDialog1.show();
+            year_week.getChildAt(1).animate().setDuration(500).rotation(-180).start();
         } else if (targetView.getId() == R.id.year_month) {
             if (datePickerDialog2 == null) {
                 boolean[] dialogType = new boolean[3];
@@ -110,14 +111,16 @@ public class ItemDetailActivity extends AppCompatActivity {
                 dialogType[2] = false;
                 DatePickerBuilder datePickerBuilder = new DatePickerBuilder(this, calendar -> {
                     currentCalendar = calendar;
-                    year_month.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").toString());
+                    ((TextView)(year_month.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").toString());
                 }).setDialogStyle(R.style.FirstDialogAnimationStyle)
                         .setType(dialogType)
                         .setCalendar(currentCalendar)
                         .setRangDate(null, Calendar.getInstance());
                 datePickerDialog2 = datePickerBuilder.build();
+                datePickerDialog2.setOnDismissListener(dialog -> year_month.getChildAt(1).animate().setDuration(500).rotation(0).start());
             }
             datePickerDialog2.show();
+            year_month.getChildAt(1).animate().setDuration(500).rotation(-180).start();
         } else if (targetView.getId() == R.id.year_month_week) {
             if (datePickerDialog3 == null) {
                 boolean[] dialogType = new boolean[3];
@@ -126,14 +129,16 @@ public class ItemDetailActivity extends AppCompatActivity {
                 dialogType[2] = true;
                 DatePickerBuilder datePickerBuilder = new DatePickerBuilder(this, calendar -> {
                     currentCalendar = calendar;
-                    year_month_week.setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").append("第").append(currentCalendar.get(Calendar.WEEK_OF_MONTH)).append("周").toString());
+                    ((TextView)(year_month_week.getChildAt(0))).setText(new StringBuilder().append(currentCalendar.get(Calendar.YEAR)).append("年").append(currentCalendar.get(Calendar.MONTH) + 1).append("月").append("第").append(currentCalendar.get(Calendar.WEEK_OF_MONTH)).append("周").toString());
                 }).setDialogStyle(R.style.FirstDialogAnimationStyle)
                         .setType(dialogType)
                         .setCalendar(currentCalendar)
                         .setRangDate(null, Calendar.getInstance());
                 datePickerDialog3 = datePickerBuilder.build();
+                datePickerDialog3.setOnDismissListener(dialog -> year_month_week.getChildAt(1).animate().setDuration(500).rotation(0).start());
             }
             datePickerDialog3.show();
+            year_month_week.getChildAt(1).animate().setDuration(500).rotation(-180).start();
         }
     }
 }
