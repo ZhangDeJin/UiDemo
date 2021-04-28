@@ -44,7 +44,7 @@ public class VerticalSeekBar extends AppCompatSeekBar {
 
         //实现向上[0, max]的seekBar
         canvas.rotate(-90);  //将seekBar逆时针旋转90度
-        canvas.translate(-getHeight(), 0);  //将旋转后的视图移动回来
+        canvas.translate(-getHeight(), 0);  //将旋转后的视图移动回来，否则将没有内容。rotate()方法，从字面上来看旋转的是"画布"，但是我们最好是理解成旋转的是画布的坐标轴
 
         /*//实现向下[0, max]的seekBar
         canvas.rotate(90);
