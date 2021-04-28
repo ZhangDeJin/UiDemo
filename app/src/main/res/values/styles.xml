@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FirstDialogAnimationStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/FirstDialogAnimation</item>
+    </style>
+    <style name="FirstDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/translate_push_down_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_push_down_out</item>
+    </style>
+</resources>

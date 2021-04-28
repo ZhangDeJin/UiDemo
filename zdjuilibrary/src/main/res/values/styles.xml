@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.picker" parent="android:Theme.Holo.Light">
+        <item name="android:editTextStyle">@style/Widget.AppCompat.EditText.Black</item>
+    </style>
+    <style name="Widget.AppCompat.EditText.Black" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

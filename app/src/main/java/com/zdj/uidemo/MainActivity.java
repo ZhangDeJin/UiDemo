@@ -1,5 +1,6 @@
 package com.zdj.uidemo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             SystemUtils.goToAppInfo(MainActivity.this, getPackageName());
             return true;
+        } else if (id == R.id.action_item_detail) {
+            Intent intent = new Intent(this, ItemDetailActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

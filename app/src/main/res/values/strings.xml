@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">UiDemo</string>
     <string name="action_settings">App Info</string>
+    <string name="action_item_detail">Item Detail</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -9,4 +10,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
 </resources>
