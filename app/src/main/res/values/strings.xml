@@ -2,6 +2,7 @@
     <string name="app_name">UiDemo</string>
     <string name="action_settings">App Info</string>
     <string name="action_item_detail">Item Detail</string>
+    <string name="action_pop_dialog">Pop dialog</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

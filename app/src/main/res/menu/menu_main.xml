@@ -11,4 +11,8 @@
         android:id="@+id/action_item_detail"
         android:orderInCategory="100"
         android:title="@string/action_item_detail"/>
+    <item
+        android:id="@+id/action_dialog"
+        android:orderInCategory="100"
+        android:title="@string/action_pop_dialog"/>
 </menu>

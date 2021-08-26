@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.zdj.systemfuncationlibrary.SystemUtils;
 import com.zdj.systemfuncationlibrary.TimeUtils;
 import com.zdj.systemfuncationlibrary.UiUtils;
+import com.zdj.zdjuilibrary.dialog.ReasonDialog;
 import com.zdj.zdjuilibrary.popup_window.VolumePopupWindow;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private TextView tv_volume;
     private VolumePopupWindow volumePopupWindow;
+    private ReasonDialog reasonDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_item_detail) {
             Intent intent = new Intent(this, ItemDetailActivity.class);
             startActivity(intent);
+        } else if (id == R.id.action_dialog) {
+            showDialog();
         }
 
         return super.onOptionsItemSelected(item);
@@ -117,5 +121,15 @@ public class MainActivity extends AppCompatActivity {
         targetView.getLocationOnScreen(location);
         int tempWidth = (UiUtils.dpToPx(this, 80) - targetView.getWidth()) / 2;
         volumePopupWindow.showAtLocation(targetView, Gravity.NO_GRAVITY, location[0] - tempWidth, location[1] - UiUtils.dpToPx(this, 90));
+    }
+
+    private void showDialog() {
+        if (reasonDialog == null) {
+            reasonDialog = new ReasonDialog(MainActivity.this, R.style.FirstDialogAnimationStyle);
+            reasonDialog.init("驳回确认", "驳回原因：", 0, reason -> {
+
+            });
+        }
+        reasonDialog.show();
     }
 }

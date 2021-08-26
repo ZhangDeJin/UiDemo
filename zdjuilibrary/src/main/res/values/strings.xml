@@ -5,4 +5,6 @@
     <string name="year_unit">年</string>
     <string name="month_unit">月</string>
     <string name="week_unit">周</string>
+    <string name="reached_the_upper_limit">已达字数上限</string>
+    <string name="please_input">请输入</string>
 </resources>
