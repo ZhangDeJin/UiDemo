@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
 
+import java.lang.reflect.Method;
+
 /**
  * <pre>
  *     author : dejinzhang
@@ -40,5 +42,21 @@ public class SystemUtils {
         Intent data = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         data.setData(Uri.fromParts("package", packageName, null));
         context.startActivity(data);
+    }
+
+    private static final String HARMONY_OS = "harmony";
+    /**
+     * 判断是否是鸿蒙系统
+     * @return true 是鸿蒙系统  false 不是鸿蒙系统
+     */
+    public static boolean isHarmonyOS() {
+        try {
+            Class clz = Class.forName("com.huawei.system.BuildEx");
+            Method method = clz.getMethod("getOsBrand");
+            return HARMONY_OS.equals(method.invoke(clz));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
