@@ -1,13 +1,12 @@
 package com.zdj.uidemo;
 
-import android.app.Application;
-import android.app.Service;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.zdj.phone.PhoneMainActivity;
 import com.zdj.systemfuncationlibrary.SystemUtils;
 import com.zdj.systemfuncationlibrary.TimeUtils;
 import com.zdj.systemfuncationlibrary.UiUtils;
@@ -82,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (id == R.id.action_dialog) {
             showDialog();
+        } else if (id == R.id.action_phone_module) {
+            Intent intent = new Intent(this, PhoneMainActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

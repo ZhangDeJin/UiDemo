@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2f343a">
+
+    <!--号码-->
+    <TextView
+        android:id="@+id/call_phone_num"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/unknown_call"
+        android:textColor="@color/white"
+        android:textSize="32dp"/>
+
+    <!--电话归属信息：比如客户名称、联系人姓名-->
+    <TextView
+        android:id="@+id/phone_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="5dp"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <!--用户输入的指令，比如拨打10086的时候调起软键盘输入1-->
+    <TextView
+        android:id="@+id/input_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"/>
+
+    <!--通话状态，比如显示"正在呼叫"或者当前的通话时长等等-->
+    <TextView
+        android:id="@+id/call_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <com.zdj.zdjuilibrary.view.RippleView
+            android:id="@+id/layout_ripple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff2f343a"
+            android:fitsSystemWindows="true"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/call_icon"/>
+        </com.zdj.zdjuilibrary.view.RippleView>
+
+        <GridView
+            android:id="@+id/gv_dial_pad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="40dp"
+            android:numColumns="3"
+            android:layout_gravity="center"
+            android:background="#ff2f343a"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_relevant_operate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="#272e34"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_dial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dial"
+            android:textSize="14dp"
+            android:textColor="#62696c"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/dial_pad"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_tel_microphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/microphone"
+            android:textSize="14dp"
+            android:textColor="#62696C"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tel_microphone"
+            android:gravity="center"
+            android:layout_marginLeft="70dp"/>
+
+        <TextView
+            android:id="@+id/tv_tel_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/earpiece"
+            android:textSize="14dp"
+            android:textColor="#62696c"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/tel_receiver"
+            android:gravity="center"
+            android:layout_marginLeft="70dp"/>
+
+        <TextView
+            android:id="@+id/tv_on_speakerphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/speaker"
+            android:textSize="14dp"
+            android:textColor="#62696C"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/on_speakerphone"
+            android:gravity="center"
+            android:layout_marginLeft="70dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#272c32"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_no"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hang_up"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ok"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/answer"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

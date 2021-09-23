@@ -65,4 +65,34 @@ public class UiUtils {
         lastClickTime = currentClickTime;
         return flag;
     }
+
+    /**
+     * 小于10的数字前面自动加0（常用于时间、日期）
+     * @param value  原始数据
+     * @return  填充后的数据
+     */
+    public static String formatAA(int value) {
+        return String.format("%02d", value);
+    }
+
+    /**
+     * 号码脱敏处理
+     * @param phoneNum  原始号码
+     * @return 脱敏后的号码
+     */
+    public static String desensitizePhoneNum(String phoneNum) {
+        if (MatchUtils.isLegalMobilePhoneNum(phoneNum)) {  //手机号码脱敏处理
+            return phoneNum.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+        } else if (phoneNum.length() == 5) {  //银行、10086等号码脱敏处理
+            return phoneNum.replaceAll("(\\d{1})\\d{3}(\\d{1})", "$1***$2");
+        } else if (phoneNum.length() == 10) {  //400号码脱敏处理
+            return phoneNum.replaceAll("(\\d{3})\\d{4}(\\d{3})", "$1****$2");
+        } else if (phoneNum.length() == 11) {  //固话脱敏处理
+            return phoneNum.replaceAll("(\\d{4})\\d{4}(\\d{3})", "$1****$2");
+        } else if (phoneNum.length() == 12) {  //固话脱敏处理
+            return phoneNum.replaceAll("(\\d{4})\\d{4}(\\d{4})", "$1****$2");
+        } else {
+            return "*****";
+        }
+    }
 }

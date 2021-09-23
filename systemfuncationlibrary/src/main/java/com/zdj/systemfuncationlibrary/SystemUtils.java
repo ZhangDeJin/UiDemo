@@ -1,10 +1,15 @@
 package com.zdj.systemfuncationlibrary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.Settings;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -58,5 +63,48 @@ public class SystemUtils {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private static MediaPlayer mediaPlayer = null;
+
+    /**
+     * 播放音乐文件
+     * @param activity  对应的activity
+     * @param raw  音频文件
+     * @param isLoop  是否循环播放
+     */
+    public static void playSound(Activity activity, int raw, boolean isLoop) {
+        activity.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        if (isLoop) {
+            mediaPlayer.setLooping(true);
+        } else {
+            mediaPlayer.setOnCompletionListener(mp -> {
+                mp.seekTo(0);
+            });
+        }
+
+        AssetFileDescriptor file = activity.getResources().openRawResourceFd(raw);
+        try {
+            mediaPlayer.setDataSource(file.getFileDescriptor(), file.getStartOffset(), file.getLength());
+            file.close();
+            mediaPlayer.setVolume(0.5f, 0.5f);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mediaPlayer = null;
+        }
+    }
+
+    /**
+     * 停止播放音乐文件
+     */
+    public static void stopSound() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer = null;
+        }
     }
 }

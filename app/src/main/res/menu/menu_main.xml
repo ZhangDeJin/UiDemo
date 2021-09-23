@@ -15,4 +15,8 @@
         android:id="@+id/action_dialog"
         android:orderInCategory="100"
         android:title="@string/action_pop_dialog"/>
+    <item
+        android:id="@+id/action_phone_module"
+        android:orderInCategory="100"
+        android:title="@string/phone_module"/>
 </menu>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhoneMainActivity"
+    android:padding="40dp">
+
+    <TextView
+        android:id="@+id/tv_set_default_phone_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/set_default_phone_application"
+        app:layout_constraintTop_toTopOf="@+id/switch_default_phone_application"
+        app:layout_constraintBottom_toBottomOf="@+id/switch_default_phone_application"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="14dp"
+        android:textColor="@color/light_black"/>
+
+    <ImageView
+        android:id="@+id/switch_default_phone_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tv_set_default_phone_application"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/switch_off"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

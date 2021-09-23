@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Phone</string>
+    <string name="set_default_phone_application">设置为默认电话程序</string>
+    <string name="microphone_permission_request_hint_text">请开启麦克风权限，以保证电话功能的正常使用</string>
+    <string name="ok">好的</string>
+    <string name="cancel">取消</string>
+    <string name="call_ended">通话已结束</string>
+    <string name="unknown_call">未知来电</string>
+    <string name="dial">拨号</string>
+    <string name="microphone">话筒</string>
+    <string name="earpiece">听筒</string>
+    <string name="speaker">免提</string>
 </resources>

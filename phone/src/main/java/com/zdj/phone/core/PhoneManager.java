@@ -1,4 +1,4 @@
-package com.zdj.phone;
+package com.zdj.phone.core;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,8 +20,8 @@ import static android.content.Context.TELECOM_SERVICE;
  * <pre>
  *     author : dejinzhang
  *     time : 2021/09/09
- *     desc : 电话管理器。该类中包含了对电话对各类方法：
- *            接听、挂断，以及弹出设置应用为系统默认电话程序（会弹出切换系统电话程序对系统弹框）的方法。
+ *     desc : 电话管理器。该类中包含了对电话操作的各类方法：
+ *            接听、挂断，以及弹出设置应用为系统默认电话程序（会弹出切换系统电话程序的系统弹框）的方法。
  * </pre>
  */
 public class PhoneManager {

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zdj.phone">
 
+    <!--这是麦克风权限，这是通话肯定要有的-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--使用扬声器，需要该权限-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +14,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UiDemo">
-        <activity android:name=".MainActivity">
-            <intent-filter>
+        <activity android:name=".PhoneMainActivity">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
+
+        <activity android:name=".core.PhoneActivity">
+            <!--region provides ongoing call UI必须有，否则调不起设置默认电话-->
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tel"/>
+            </intent-filter>
+            <!--end region-->
+
+            <!--region provides dial UI-->
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <!--end region-->
+        </activity>
+
+        <service
+            android:name=".core.PhoneService"
+            android:permission="android.permission.BIND_INCALL_SERVICE">
+            <meta-data
+                android:name="android.telecom.IN_CALL_SERVICE_UI"
+                android:value="true"/>
+            <intent-filter>
+                <action android:name="android.telecom.InCallService"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".ScreenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
