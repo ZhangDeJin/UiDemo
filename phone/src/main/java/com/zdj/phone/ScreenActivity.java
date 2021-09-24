@@ -403,7 +403,7 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                 tv_on_speakerphone.setTag(!((boolean) tv_on_speakerphone.getTag()));
                 tv_on_speakerphone.setTextColor(((boolean) tv_on_speakerphone.getTag()) ? Color.parseColor("#D6E3F4") : Color.parseColor("#62696C"));
                 tv_on_speakerphone.setCompoundDrawablesRelativeWithIntrinsicBounds(0, ((boolean) tv_on_speakerphone.getTag()) ? R.drawable.on_speakerphone_highlight : R.drawable.on_speakerphone, 0, 0);
-                switchSpeaker((boolean)tv_on_speakerphone.getTag());
+                PhoneManager.switchSpeaker(ScreenActivity.this, (boolean)tv_on_speakerphone.getTag());
             } else if (v.getId() == R.id.tv_dial) {
                 tv_dial.setTag(!((boolean)tv_dial.getTag()));
                 if ((boolean)tv_dial.getTag()) {
@@ -501,12 +501,12 @@ public class ScreenActivity extends Activity implements SensorEventListener {
         LogUtils.i(TAG, "its[0]:" + its[0]);
         if (!(boolean) tv_on_speakerphone.getTag()) {  //表示未手动打开扬声器
             if (its[0] == 0.0) {  //贴近手机
-                switchSpeaker(false);
+                PhoneManager.switchSpeaker(this, false);
                 tv_on_speakerphone.setTextColor(Color.parseColor("#62696C"));
                 tv_on_speakerphone.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.on_speakerphone, 0, 0);
                 tv_on_speakerphone.setTag(false);
             } else {  //远离手机
-                switchSpeaker(true);
+                PhoneManager.switchSpeaker(this, true);
                 tv_on_speakerphone.setTextColor(Color.parseColor("#D6E3F4"));
                 tv_on_speakerphone.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.on_speakerphone_highlight, 0, 0);
                 tv_on_speakerphone.setTag(true);
@@ -516,19 +516,6 @@ public class ScreenActivity extends Activity implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
-
-    private void switchSpeaker(boolean on) {
-        if (on) {  //打开扬声器
-            audioManager.setSpeakerphoneOn(true);
-        } else {  //关闭扬声器
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                audioManager.setSpeakerphoneOn(false);
-                audioManager.setMode(AudioManager.MODE_IN_CALL);
-            } else {
-                audioManager.setSpeakerphoneOn(false);
-            }
-        }
-    }
 
     private void showVolumePopupWindow(final View targetView) {
         if (volumePopupWindow == null) {

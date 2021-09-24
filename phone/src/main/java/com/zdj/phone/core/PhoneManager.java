@@ -135,8 +135,10 @@ public class PhoneManager {
     public static void switchSpeaker(Context context, boolean on) {
         AudioManager audioManager = (AudioManager) context.getSystemService(AUDIO_SERVICE);
         if (audioManager != null) {
-            audioManager.setMode(AudioManager.MODE_IN_CALL);
             audioManager.setSpeakerphoneOn(on);
+            if (!on && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                audioManager.setMode(AudioManager.MODE_IN_CALL);
+            }
         }
     }
 }
