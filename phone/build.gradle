@@ -1,5 +1,10 @@
-plugins {
+/*plugins {
     id 'com.android.library'
+}*/
+if (rootProject.ext.isModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
 }
 
 android {
@@ -7,6 +12,9 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        if (!rootProject.ext.isModule.toBoolean()) {
+            applicationId "com.zdj.phone"
+        }
 //        applicationId "com.zdj.phone"
         minSdkVersion 23
         targetSdkVersion 30
