@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
+
+    <GridView
+        android:id="@+id/gv_dial_pad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:numColumns="3"/>
+
+    <ImageView
+        android:id="@+id/iv_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gv_dial_pad"
+        android:src="@drawable/answer"/>
+
+    <ImageView
+        android:id="@+id/iv_collapse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_call"
+        app:layout_constraintBottom_toBottomOf="@id/iv_call"
+        android:src="@drawable/dial_pad_collapse"
+        android:layout_marginLeft="45dp"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_call"
+        app:layout_constraintBottom_toBottomOf="@id/iv_call"
+        android:src="@drawable/dial_pad_delete"
+        android:layout_marginRight="45dp"
+        android:padding="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

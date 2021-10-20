@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zdj.phone">
 
+    <!--将电话拨打出去，所必需的权限-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <!--这是麦克风权限，这是通话肯定要有的-->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!--使用扬声器，需要该权限-->

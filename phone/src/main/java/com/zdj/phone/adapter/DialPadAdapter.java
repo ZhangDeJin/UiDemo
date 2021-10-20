@@ -44,18 +44,18 @@ public class DialPadAdapter extends BaseAdapter {
         mContext = context;
         mLayoutStyle = layoutStyle;
         mList = new ArrayList<>();
-        mList.add(new ObjDial("1", " "));
-        mList.add(new ObjDial("2", "ABC"));
-        mList.add(new ObjDial("3", "DEF"));
-        mList.add(new ObjDial("4", "GHI"));
-        mList.add(new ObjDial("5", "JKL"));
-        mList.add(new ObjDial("6", "MNO"));
-        mList.add(new ObjDial("7", "PQRS"));
-        mList.add(new ObjDial("8", "TUV"));
-        mList.add(new ObjDial("9", "WXYZ"));
-        mList.add(new ObjDial("*", "(P)"));
-        mList.add(new ObjDial("0", "+"));
-        mList.add(new ObjDial("#", "(W)"));
+        mList.add(new ObjDial('1', " "));
+        mList.add(new ObjDial('2', "ABC"));
+        mList.add(new ObjDial('3', "DEF"));
+        mList.add(new ObjDial('4', "GHI"));
+        mList.add(new ObjDial('5', "JKL"));
+        mList.add(new ObjDial('6', "MNO"));
+        mList.add(new ObjDial('7', "PQRS"));
+        mList.add(new ObjDial('8', "TUV"));
+        mList.add(new ObjDial('9', "WXYZ"));
+        mList.add(new ObjDial('*', "(P)"));
+        mList.add(new ObjDial('0', "+"));
+        mList.add(new ObjDial('#', "(W)"));
     }
     @Override
     public int getCount() {
@@ -85,7 +85,7 @@ public class DialPadAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv_main_text.setText(mList.get(position).getMainText());
+        holder.tv_main_text.setText(new StringBuilder().append(mList.get(position).getMainText()));
         holder.tv_main_text.setVisibility(View.VISIBLE);
         if (!TextUtils.isEmpty(mList.get(position).getSecondaryText())) {
             holder.tv_secondary_text.setText(mList.get(position).getSecondaryText());

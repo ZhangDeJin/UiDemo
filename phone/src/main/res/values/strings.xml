@@ -10,4 +10,6 @@
     <string name="microphone">话筒</string>
     <string name="earpiece">听筒</string>
     <string name="speaker">免提</string>
+    <string name="call_permission_hint">请开启电话权限，以保证电话功能的正常使用</string>
+    <string name="go_open">去开启</string>
 </resources>

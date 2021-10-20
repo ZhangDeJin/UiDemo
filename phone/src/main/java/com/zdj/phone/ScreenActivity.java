@@ -344,19 +344,19 @@ public class ScreenActivity extends Activity implements SensorEventListener {
         gv_dial_pad.setAdapter(dialPadAdapter);
         gv_dial_pad.setSelector(new ColorDrawable(Color.TRANSPARENT));
         gv_dial_pad.setOnItemClickListener((parent, view, position, id) -> {
-            String str = dialPadAdapter.getList().get(position).getMainText();
+            Character character = dialPadAdapter.getList().get(position).getMainText();
             String existsText = inputTxt.getText().toString();
             StringBuilder stringBuilder = new StringBuilder();
             if (!TextUtils.isEmpty(existsText)) {
                 stringBuilder.append(existsText);
             }
-            stringBuilder.append(str);
+            stringBuilder.append(character);
             inputTxt.setText(stringBuilder);
             inputTxt.setVisibility(View.VISIBLE);
             if (isSip) {
                 //调用sip的输入指令的接口
             } else {
-                PhoneManager.playDtmfTone(Config.call, str.charAt(0));
+                PhoneManager.playDtmfTone(Config.call, character);
             }
         });
 

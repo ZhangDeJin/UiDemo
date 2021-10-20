@@ -6,4 +6,17 @@
     <style name="Widget.AppCompat.EditText.Black" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="FirstDialogAnimationStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/FirstDialogAnimation</item>
+    </style>
+    <style name="NotDarkenAndFirstDialogAnimationStyle" parent="FirstDialogAnimationStyle">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="FirstDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/translate_push_down_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_push_down_out</item>
+    </style>
 </resources>

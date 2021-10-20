@@ -8,22 +8,22 @@ package com.zdj.phone.bean;
  * </pre>
  */
 public class ObjDial {
-    private String mainText;
+    private Character mainText;
     private String secondaryText;
 
     public ObjDial() {
     }
 
-    public ObjDial(String mainText, String secondaryText) {
+    public ObjDial(Character mainText, String secondaryText) {
         this.mainText = mainText;
         this.secondaryText = secondaryText;
     }
 
-    public String getMainText() {
+    public Character getMainText() {
         return mainText;
     }
 
-    public void setMainText(String mainText) {
+    public void setMainText(Character mainText) {
         this.mainText = mainText;
     }
 
