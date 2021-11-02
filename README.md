@@ -1,5 +1,5 @@
 # UiDemo
-本项目是关于一些UI、轮子，以及一个Phone module。
+本项目是关于一些UI、轮子、通用的工具方法，以及一个Phone module。
 
 UI、轮子主要包括：
 
