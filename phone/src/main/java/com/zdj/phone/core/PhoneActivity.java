@@ -2,7 +2,6 @@ package com.zdj.phone.core;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -20,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.zdj.phone.R;
 import com.zdj.phone.widget.DialPadDialog;
+import com.zdj.zdjuilibrary.dialog.NormalInteractionDialog;
 
 import java.util.List;
 
@@ -102,15 +102,21 @@ public class PhoneActivity extends Activity {
         if (requestCode == MY_PERMISSIONS_CALL_PHONE) {
             if (!(grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                        .setMessage(getString(R.string.call_permission_hint))
-                        .setPositiveButton(getString(R.string.go_open), (dialog, which) -> {
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            intent.setData(Uri.fromParts("package", getPackageName(), null));
-                            startActivity(intent);
-                        })
-                        .setNegativeButton(getString(R.string.cancel), (dialog, which) -> {});
-                builder.create().show();
+                NormalInteractionDialog normalInteractionDialog = new NormalInteractionDialog(this, R.style.DialogNoAnimationStyle);
+                normalInteractionDialog.init(true, false, null,
+                        getString(R.string.call_permission_hint), getString(R.string.cancel), getString(R.string.go_open));
+                normalInteractionDialog.show();
+                normalInteractionDialog.setCallback(new NormalInteractionDialog.Callback() {
+                    @Override
+                    public void done() {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        intent.setData(Uri.fromParts("package", getPackageName(), null));
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void cancel() {}
+                });
             } else {
                 callDeal(dialPadDialog.getInputStringList());
             }

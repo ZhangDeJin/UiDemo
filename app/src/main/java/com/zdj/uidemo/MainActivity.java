@@ -9,9 +9,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.zdj.phone.PhoneMainActivity;
 import com.zdj.systemfuncationlibrary.SystemUtils;
 import com.zdj.systemfuncationlibrary.TimeUtils;
+import com.zdj.systemfuncationlibrary.ToastUtils;
 import com.zdj.systemfuncationlibrary.UiUtils;
 import com.zdj.zdjuilibrary.dialog.ReasonDialog;
 import com.zdj.zdjuilibrary.popup_window.VolumePopupWindow;
+import com.zdj.zdjuilibrary.widget.simulation_toast.ActivityToast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -84,6 +87,18 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_phone_module) {
             Intent intent = new Intent(this, PhoneMainActivity.class);
             startActivity(intent);
+        } else if (id == R.id.action_toast_test) {
+            if (SystemUtils.isNotificationEnabled(this)) {
+                ToastUtils.customToastView(this, "这是使用原生吐司的自定义Toast", Toast.LENGTH_SHORT, 0);
+            } else {
+                ActivityToast activityToast = new ActivityToast(this);
+                View view = LayoutInflater.from(this).inflate(R.layout.layout_simulation_toast, null);
+                activityToast.setView(view);
+                activityToast.setText("这是使用WindowManager创建的类似于系统Toast的东西");
+                activityToast.setDuration(Toast.LENGTH_SHORT);
+                activityToast.setGravity(Gravity.CENTER, 0, 0);
+                activityToast.show();
+            }
         }
 
         return super.onOptionsItemSelected(item);

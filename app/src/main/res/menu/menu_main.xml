@@ -19,4 +19,8 @@
         android:id="@+id/action_phone_module"
         android:orderInCategory="100"
         android:title="@string/phone_module"/>
+    <item
+        android:id="@+id/action_toast_test"
+        android:orderInCategory="100"
+        android:title="@string/toast_test"/>
 </menu>

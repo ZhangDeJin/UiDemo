@@ -24,7 +24,8 @@
             </intent-filter>-->
         </activity>
 
-        <activity android:name=".core.PhoneActivity">
+        <activity android:name=".core.PhoneActivity"
+            android:screenOrientation="portrait">
             <!--region provides ongoing call UI必须有，否则调不起设置默认电话-->
             <intent-filter>
                 <action android:name="android.intent.action.DIAL"/>

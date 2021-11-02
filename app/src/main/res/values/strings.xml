@@ -4,6 +4,7 @@
     <string name="action_item_detail">Item Detail</string>
     <string name="action_pop_dialog">Pop dialog</string>
     <string name="phone_module">Phone Module</string>
+    <string name="toast_test">Toast test</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

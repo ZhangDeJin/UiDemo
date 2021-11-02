@@ -19,4 +19,9 @@
         <item name="android:windowEnterAnimation">@anim/translate_push_down_in</item>
         <item name="android:windowExitAnimation">@anim/translate_push_down_out</item>
     </style>
+
+    <style name="DialogNoAnimationStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>
