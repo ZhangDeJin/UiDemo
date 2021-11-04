@@ -209,6 +209,26 @@ public class UiUtils {
     }
 
     /**
+     * 计算PopupWindow消失区域的高度
+     * @param context  上下文环境
+     * @param height  PopupWindow内容区域的高度
+     * @return  PopupWindow消失区域的高度
+     */
+    public static int calculatePopupWindowDismissHeight(Context context, int height) {
+        int result;
+        if (SystemUtils.isNotchOfHuawei(context)) {
+            result = UiUtils.getHeight(context) + SystemUtils.getNotchSizeOfHuawei(context)[1] - UiUtils.getStatusBarHeight(context) - height;
+        } else if (SystemUtils.isNotchOfXiaomi(context)) {
+            result = UiUtils.getHeight(context) + SystemUtils.getMiSupplementHeight(context) + UiUtils.getStatusBarHeight(context) - UiUtils.getStatusBarHeight(context) - height;
+        } else if ((SystemUtils.isAndroidPNotch(context) != null) || SystemUtils.isNotchOfOppo(context) || SystemUtils.isNotchOfVivo(context)) {
+            result = UiUtils.getHeight(context) + UiUtils.getStatusBarHeight(context) - UiUtils.getStatusBarHeight(context) - height;
+        } else {
+            result = UiUtils.getHeight(context) - UiUtils.getStatusBarHeight(context) - height;
+        }
+        return result;
+    }
+
+    /**
      * 格式化单位（从B、KB、MB、GB一直到TB应有尽有，根据具体的大小显示合适的单位）
      * @param size  大小
      * @return  格式化后的单位
@@ -289,7 +309,7 @@ public class UiUtils {
      * @param phoneNum  原始号码
      * @return 脱敏后的号码
      */
-    public static String desensitizePhoneNum(String phoneNum) {
+    public static String desensitizePhoneNumber(String phoneNum) {
         if (MatchUtils.isLegalMobilePhoneNum(phoneNum)) {  //手机号码脱敏处理
             return phoneNum.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
         } else if (phoneNum.length() == 5) {  //银行、10086等号码脱敏处理

@@ -221,7 +221,7 @@ public class ScreenActivity extends Activity implements SensorEventListener {
         StringBuilder stringBuilder = new StringBuilder();
         if (isPhoneHide) {
             if (!phoneNum.equals("未知号码")) {
-                stringBuilder.append(UiUtils.desensitizePhoneNum(phoneNum));
+                stringBuilder.append(UiUtils.desensitizePhoneNumber(phoneNum));
             } else {
                 stringBuilder.append(phoneNum);
             }
