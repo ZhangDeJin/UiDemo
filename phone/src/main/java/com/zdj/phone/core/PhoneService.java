@@ -40,11 +40,11 @@ public class PhoneService extends InCallService {
                 Intent intent = new Intent();
                 intent.setAction(ScreenActivity.CALL_NET_END);
                 sendBroadcast(intent);
-                call.unregisterCallback(callback);  //其实这句代码也可以注释掉，因为当连接断开时，即电话挂断的时候，会在进入这个监听后，再回调onCallRemoved，我们在onCallRemoved中取消注册回调即可
-            } else if (state == Call.STATE_CONNECTING) {
+//                call.unregisterCallback(callback);  //其实这句代码也可以注释掉，因为当连接断开时，即电话挂断的时候，会在进入这个监听后，再回调onCallRemoved，我们在onCallRemoved中取消注册回调即可
+            }/* else if (state == Call.STATE_CONNECTING) {
                 LogUtils.i(TAG, "----呼叫，正在建立连接----" + call.toString());
                 //我们也可以根据业务在这里执行相应动作。
-            }
+            }*/
         }
     };
 
