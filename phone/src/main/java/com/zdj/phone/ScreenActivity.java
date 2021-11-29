@@ -113,9 +113,9 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                 }
             } else if (intent.getAction().equals("android.intent.action.HEADSET_PLUG")) {
                 if (intent.hasExtra("state")) {
-                    if (intent.getIntExtra("state", 0) == 0) {
+                    if (intent.getIntExtra("state", 0) == 0) {  //拔出耳机
                         isHeadset = false;
-                    } else if (intent.getIntExtra("state", 0) == 1) {
+                    } else if (intent.getIntExtra("state", 0) == 1) {  //插入耳机
                         isHeadset = true;
                         if (isRing) {
                             return;
@@ -126,6 +126,9 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                         } else {
                             audioManager.setSpeakerphoneOn(false);
                         }
+                        tv_on_speakerphone.setTag(false);
+                        tv_on_speakerphone.setTextColor(Color.parseColor("#62696C"));
+                        tv_on_speakerphone.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.on_speakerphone, 0, 0);
                     }
                 }
             } else {
@@ -191,11 +194,11 @@ public class ScreenActivity extends Activity implements SensorEventListener {
         }
 
         if (phoneFrom.equals(NET_IN)) {  //呼入
-            isRing = true;
             audioManager.requestAudioFocus(mAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
             if (!isAxbTwoAutoAnswer) {
                 ll_ok.setVisibility(View.VISIBLE);
                 ll_no.setVisibility(View.VISIBLE);
+                isRing = true;
                 SystemUtils.playSound(this, R.raw.ring, true);  //播放铃声
                 callStatus = 2;
             } else {
@@ -245,9 +248,9 @@ public class ScreenActivity extends Activity implements SensorEventListener {
         if (!isAxbTwoAutoAnswer) {
             registerReceiver(mEndCallReceiver, new IntentFilter(CALL_NET_END));
             registerReceiver(mEndCallReceiver, new IntentFilter(CALL_NET_ING));
+            registerReceiver(mEndCallReceiver, new IntentFilter("android.intent.action.HEADSET_PLUG"));
             if (isSip) {
                 registerReceiver(mEndCallReceiver, new IntentFilter("android.intent.action.PHONE_STATE"));
-                registerReceiver(mEndCallReceiver, new IntentFilter("android.intent.action.HEADSET_PLUG"));
             }
             animationHandler.postDelayed(timeRunnable, 1000);
         }
@@ -550,13 +553,6 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                         return;
                     }
                     isNetting = true;
-                    isRing = false;
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                        audioManager.setSpeakerphoneOn(false);
-                        audioManager.setMode(AudioManager.MODE_IN_CALL);
-                    } else {
-                        audioManager.setSpeakerphoneOn(false);
-                    }
                     currentTime = 0;
                     callStatus = CONNECTED;
                     if (ll_ok != null) {
@@ -565,6 +561,7 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                     if (ll_no != null) {
                         ll_no.setVisibility(View.VISIBLE);
                     }
+                    isRing = false;
                     SystemUtils.stopSound();  //停止播放铃声
                 } else if (action.equals(CALL_NET_END)) {
                     if (ll_ok != null) {
@@ -573,8 +570,8 @@ public class ScreenActivity extends Activity implements SensorEventListener {
                     if (ll_no != null) {
                         ll_no.setVisibility(View.GONE);
                     }
-                    isRing = false;
                     LogUtils.i(TAG, "---call_net_end---");
+                    isRing = false;
                     SystemUtils.stopSound();  //停止播放铃声
                     statusTxt.setText(getString(R.string.call_ended));
                     Toast.makeText(ScreenActivity.this, getString(R.string.call_ended), Toast.LENGTH_SHORT).show();
